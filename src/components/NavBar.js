@@ -4,11 +4,20 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import heart from "./Assets/Heart.png";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { css } from "./CssFile";
 
 export default function NavBar() {
+  const navlinks = ({ isActive }) => {
+    return {
+      textDecoration: "none",
+      fontWeight: "bold",
+      backgroundColor: isActive ? "lightblue" : "transparent",
+      padding: "8px",
+      color: isActive ? "black" : "white",
+    };
+  };
   return (
     <div>
       <Navbar
@@ -23,54 +32,30 @@ export default function NavBar() {
               alt="NavBar Logo"
               style={{ paddingInline: "10px" }}
             />{" "}
-            <Link
+            <NavLink
               to="/"
               style={{
                 textDecoration: "none",
-                color: "white",
                 fontWeight: "bold",
+                color: "white",
               }}
             >
               Hassaan Yousafzai
-            </Link>
+            </NavLink>
           </Navbar.Brand>
           <nav style={{ marginLeft: "auto" }}>
-            <Link
-              className="mx-3"
-              style={{
-                textDecoration: "none",
-                color: "white",
-                fontWeight: "bold",
-              }}
-              to="/"
-            >
+            <NavLink className="mx-3" style={navlinks} to="/">
               {" "}
               Home
-            </Link>
-            <Link
-              className="mx-3"
-              style={{
-                textDecoration: "none",
-                color: "white",
-                fontWeight: "bold",
-              }}
-              to="/about"
-            >
+            </NavLink>
+            <NavLink className="mx-3" style={navlinks} to="/about">
               {" "}
               About
-            </Link>
-            <Link
-              className="mx-3"
-              style={{
-                textDecoration: "none",
-                color: "white",
-                fontWeight: "bold",
-              }}
-              to="/articles"
-            >
+            </NavLink>
+            <NavLink className="mx-3" style={navlinks} to="/articles">
               {" "}
               Articles
-            </Link>
+            </NavLink>
 
             <Button
               className="mx-2"
